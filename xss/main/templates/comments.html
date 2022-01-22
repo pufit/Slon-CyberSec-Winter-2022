@@ -1,0 +1,85 @@
+<br><br><br>
+{% autoescape false %}
+<link href="{{ url_for('.static', filename='css/comments.css') }}" rel="stylesheet">
+<style>
+    .error {
+        color: #D8000C;
+        border: 1px solid;
+        margin: 10px 0;
+        padding: 15px 10px 15px 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        background: #FFBABA url('{{ url_for('.static', filename='img/error.png') }}') no-repeat 10px center;
+    }
+
+    .success {
+        color: #4F8A10;
+        border: 1px solid;
+        margin: 10px 0;
+        padding: 15px 10px 15px 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        background: #DFF2BF url('{{ url_for('.static', filename='img/success.png') }}') no-repeat 10px center;;
+    }
+</style>
+<section class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <form method="post" id="send">
+                        <textarea name="comment_text" class="form-control" rows="2"
+                                  placeholder="Добавьте Ваш комментарий" form="send"></textarea>
+                        <div class="mar-top clearfix">
+                            <input class="btn btn-sm btn-primary pull-right" {% if not auth %} disabled {% endif %}
+                                   type="submit">
+                            {% if not auth %}
+                                <span class="text-info">Отправка комментария доступна только авторизированным пользователям</span>
+                            {% endif %}
+                        </div>
+                    </form>
+                    {% with messages  = get_flashed_messages(with_categories=true) %}
+                        {% for category, message in messages %}
+                            <div class="{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-body">
+
+                    {% for comment in comments %}
+                        <div class="media-block">
+                            <a class="media-left" href="/profile?user={{ comment[0] }}">
+                                <img class="img-circle img-sm img"
+                                     alt="Профиль пользователя"
+                                     src="
+                            {% if comment[0] == 'admin' %}
+                                {{ url_for('.static', filename='img/admin.jpg') }}
+                            {% else %}
+                                {{ url_for('.static', filename='img/default.jpg') }}
+                            {% endif %}"></a>
+                            <div class="media-body">
+                                <div class="mar-btm">
+                                    <a href="/profile?user={{ comment[0] }}"
+                                       class="btn-link text-semibold media-heading box-inline">{{ comment[0] | escape }}</a>
+                                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> {{ comment[2] }}
+                                    </p>
+                                </div>
+                                <p>{{ comment[1] | escape }}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div><!-- /.row -->
+</section><!-- /.container -->
+{% endautoescape %}

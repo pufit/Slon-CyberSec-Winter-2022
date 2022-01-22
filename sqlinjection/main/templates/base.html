@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Слон CTF</title>
+    <link href="{{ url_for('.static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('.static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Слон CTF</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        {% if auth %}
+            <ul class="navbar-nav mr-6">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                        <img style="border-radius: 50%; width: 30px; height: 30px" src="{% if auth == 'admin' %}
+                                {{ url_for('.static', filename='img/admin.jpg') }}
+                            {% else %}
+                                {{ url_for('.static', filename='img/default.jpg') }}
+                            {% endif %}">
+                        {{ auth }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01" style="left: -68px">
+                        <a class="dropdown-item" href="/profile?user={{ auth }}">Личный кабинет</a>
+                        <a class="dropdown-item" href="/logout">Выйти</a>
+                    </div>
+                </li>
+            </ul>
+        {% else %}
+            <button onclick="self.location.href='/reg';" class="btn btn-outline-success my-2 my-sm-0">Регистрация
+            </button>
+            <button onclick="self.location.href='/login';" class="btn btn-sm btn-primary my-2 my-sm-0"
+                    style="margin-left: 20px">Авторизация
+            </button>
+        {% endif %}
+    </div>
+</nav>
+
+
+<main role="main" class="container">
+    {% if auth == 'admin' %}
+        <h3>{SLON-e721e73f83514c679bbdc97e88a7097f}</h3>
+    {% endif %}
+</main>
+
+
+{% include 'comments.html' %}
+
+<script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('.static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
+</body>
+</html>

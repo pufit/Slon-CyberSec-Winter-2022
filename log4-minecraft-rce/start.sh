@@ -1,0 +1,1 @@
+java -Xms2G -Xmx2G -Dcom.sun.jndi.ldap.object.trustURLCodebase=false -jar paper-1.16.5-700.jar --nogui

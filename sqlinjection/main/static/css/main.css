@@ -1,0 +1,25 @@
+
+body {
+    background: url(http://bootstraptema.ru/images/bg/bg-1.png)
+}
+
+body {
+    padding-top: 5rem;
+}
+
+.page-main {
+    padding: 3rem 1.5rem;
+}
+
+.page-main h1 {
+    margin-bottom: 20px;
+}
+
+.rating-container {
+    width: 60%;
+    font-size: 24px;
+}
+
+.rating-container div {
+    height: 75px;
+}

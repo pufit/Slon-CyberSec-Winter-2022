@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Регистрация</title>
+
+    <link href="{{ url_for('.static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('.static', filename='css/signin.css') }}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<form class="form-signin" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+    <label for="inputEmail" class="sr-only">Login</label>
+    <input name="login" type="text" id="inputLogin" class="form-control" placeholder="Логин" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+    <input name="key" type="text" id="inputPassword" class="form-control" placeholder="Секретный ключ" required> <br>
+    <span class="text-info">Секретный ключ - целое число, длинной не больше 8 цифр. Для получения ключа, обращайтесь к
+        <a href="#">администратору</a>
+    </span><br><br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+    <span class="text-danger">{{ error }}</span>
+</form>
+
+<script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('.static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
+
+</body>
+</html>

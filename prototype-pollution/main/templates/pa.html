@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя {{ data[0] }}</title>
+    <link href="{{ url_for('.static', filename='css/pa.css') }}" rel="stylesheet">
+
+</head>
+<body><br><br><br>
+
+
+<div class="container">
+    <div id="main">
+
+
+        <div class="row" id="real-estates-detail">
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <header class="panel-title">
+                            <div class="text-center">
+                                <strong>Пользователь сайта</strong>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-center" id="author">
+                            <img src="{% if data[0] == 'admin' %}
+                                        {{ url_for('.static', filename='img/admin.jpg') }}
+                                     {% else %}
+                                        {{ url_for('.static', filename='img/default.jpg') }}
+                                     {% endif %}">
+                            <h3>{{ data[0] }}</h3>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-xs-12">
+                <div class="panel">
+                    <div class="panel-body">
+
+                        <div id="myTabContent" class="tab-content">
+                            <hr>
+                            <div class="tab-pane fade active in" id="detail">
+                                <h4>История профиля</h4>
+                                <table class="table table-th-block">
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css">
+<link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css">
+<script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+
+<!-- /.container --></body>
+</html>
