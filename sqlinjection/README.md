@@ -1,7 +1,7 @@
 # День четвертый (SQL Injection)
 -- -
 ### Цель атаки: 
-получить доступ к пользователю admin на сайте 
+Получить доступ к пользователю admin на сайте 
 
 ### Решение:
 
@@ -15,7 +15,7 @@ UPDATE users SET password = 'kek' WHERE user = 'admin';
 INSERT INTO users VALUES ('lol
 ```
 
-### Интсрументы и полезные ссылки
+### Инструменты и полезные ссылки
 - Песочница, где можно потестить SQL запросы https://sql-academy.org/ru/sandbox
 - Универсальная утилита для поиска SQL Injection https://sqlmap.org/
 
